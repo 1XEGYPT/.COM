@@ -12,6 +12,7 @@
       margin: 0;
       padding: 20px;
       text-align: center;
+      font-weight: bold; /* كل النص عريض */
     }
     /* حركة بسيطة للأيقونات */
     .animated-icon {
@@ -73,7 +74,6 @@
       padding: 10px 20px;
       min-width: 200px;
       font-size: 18px;
-      font-weight: bold;
       text-align: center;
       text-decoration: none;
       border-radius: 10px;
@@ -115,7 +115,7 @@
       box-shadow: 0 0 15px rgba(255,255,255,0.7);
       transition: transform 0.7s ease, opacity 0.7s ease;
     }
-    /* فئة لتحديد حجم الصورة لجميع الصور */
+    /* حجم الصورة */
     .small-image { max-width: 320px; }
     /* تأثير الانتقال: تلاشي مع انزلاق خفيف من اليسار */
     @keyframes transitionEffect {
@@ -135,9 +135,9 @@
     .transition-effect {
       animation: transitionEffect 0.7s ease forwards;
     }
-    /* فاصل بين الأزرار والمعرض (فاصل كبير) */
+    /* فواصل */
     .separator {
-      height: 100px;
+      height: 20px;
     }
     /* تنسيقات الأزرار */
     .buttons {
@@ -155,7 +155,6 @@
       padding: 12px;
       text-decoration: none;
       font-size: 16px;
-      font-weight: bold;
       text-align: center;
       box-shadow: 0 4px 6px rgba(0,0,0,0.3);
       border: 2px solid rgba(255,255,255,0.2);
@@ -193,6 +192,18 @@
       transform: scale(1.2);
       box-shadow: 0 0 5px #4caf50;
     }
+    /* نص بدون برواز مع تكبيره وتأثير تدرجي على كلمة Android */
+    .official-text {
+      font-size: 24px;
+      margin: 20px auto;
+    }
+    .official-text .android {
+      font-size: 32px;
+      background: linear-gradient(45deg, #90ee90, #006400);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 10px rgba(144,238,144,0.8);
+    }
     /* البرواز الترويجي */
     .promo-frame {
       border: 2px solid #00bfa5;
@@ -210,7 +221,6 @@
       background: #00bfa5;
       color: white;
       font-size: 24px;
-      font-weight: bold;
       padding: 10px;
       border-radius: 10px;
       margin-bottom: 10px;
@@ -275,7 +285,14 @@
     </div>
   </div>
   
-  <!-- حذف النص الخاص بتطبيق 1XBET لنظام التشغيل اندوريد -->
+  <!-- النص بدون برواز مع تكبيره وتأثير تدريجي على كلمة Android -->
+  <div class="official-text">
+    الموقع الرسمي لتنزيل التطبيق<br>
+    لنظام التشغيل <span class="android">Android</span>
+  </div>
+  
+  <!-- فاصل بين النص والأزرار -->
+  <div class="separator"></div>
   
   <!-- الأزرار -->
   <div class="buttons">
@@ -293,7 +310,7 @@
     </a>
   </div>
   
-  <!-- فاصل كبير بين الأزرار والبرواز -->
+  <!-- فاصل بين الأزرار والبرواز الترويجي -->
   <div class="separator"></div>
   
   <!-- البرواز الترويجي -->
@@ -311,7 +328,7 @@
     document.addEventListener('touchmove', () => {
       dropdownMenu.classList.remove('show');
     });
-    
+      
     var images = [
       "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhD0EUiBF1EtxkMEMYXFTPY7fZQDpAXyypLkpYzH4XQmLB-2r0ykLqc2_KkOGoBbcFqOLDhtcZ0MQuYaUVfCud7Y8DayrWJ5jnOyPnhfB4cIE9biXSHsaM1MA5tG55UjquL0r4NID0cBDN3WxaSA7GkIz0VuJSQXjh9INwO1IicnBxQ6BBeKTQ3wZpBQqUM/s1280/1000007990.webp",
       "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg61DAEPKZottfP18o27RF3n3akt2OAxkhlhTlczayFici3HFK9udYvzDcz1Oqo78dET54JQrlnjwoAxsby6LlGgvggcyrjpbhVriHZLA642VYL6XD7AaQKY7STOhexRVjDYjYng8uDiQSeSAOOvh_ziEmT1a2nNIKAC7PEIdroHp9M5eVXcsqsg_9JXzrL/s1280/1000007991.webp",
@@ -321,12 +338,12 @@
     var slideIndex = 0;
     var slideshowImage = document.getElementById("slideshow-image");
     var dots = document.getElementsByClassName("dot");
-    
+      
     function showSlide(index) {
-      if(index >= images.length) { slideIndex = 0; }
-      if(index < 0) { slideIndex = images.length - 1; }
+      if (index >= images.length) { slideIndex = 0; }
+      if (index < 0) { slideIndex = images.length - 1; }
       slideshowImage.src = images[slideIndex];
-      for(var i = 0; i < dots.length; i++){
+      for (var i = 0; i < dots.length; i++){
         dots[i].classList.remove("active");
       }
       dots[slideIndex].classList.add("active");
@@ -334,22 +351,22 @@
       void slideshowImage.offsetWidth;
       slideshowImage.classList.add("transition-effect");
     }
-    
+      
     function nextSlide() {
       slideIndex++;
-      if(slideIndex >= images.length) { slideIndex = 0; }
+      if (slideIndex >= images.length) { slideIndex = 0; }
       showSlide(slideIndex);
     }
-    
+      
     function prevSlide() {
       slideIndex--;
-      if(slideIndex < 0) { slideIndex = images.length - 1; }
+      if (slideIndex < 0) { slideIndex = images.length - 1; }
       showSlide(slideIndex);
     }
-    
+      
     showSlide(slideIndex);
     setInterval(nextSlide, 5000);
-    
+      
     var touchstartX = 0;
     var touchendX = 0;
     slideshowImage.addEventListener('touchstart', function(event) {
@@ -357,10 +374,10 @@
     });
     slideshowImage.addEventListener('touchend', function(event) {
       touchendX = event.changedTouches[0].screenX;
-      if(touchendX < touchstartX - 50) { nextSlide(); }
-      if(touchendX > touchstartX + 50) { prevSlide(); }
+      if (touchendX < touchstartX - 50) { nextSlide(); }
+      if (touchendX > touchstartX + 50) { prevSlide(); }
     });
-    
+      
     for (let i = 0; i < dots.length; i++){
       dots[i].addEventListener("click", function(){
         slideIndex = i;
